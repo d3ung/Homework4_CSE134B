@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Edit a habit</title>
+    <link rel="stylesheet" href="../css/forms.css">
+    <script type="text/javascript" src="../js/parse-1.6.7.min.js"></script>
+    <script type="text/javascript" src="../js/queryEditHabit.js"></script>
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+  </head>
+  <body onload="loginCheck(); queryEditHabit()">
+    <div class="forms">
+      <h2>Edit A Habit</h2>
+      <form id="edit-forms" method="GET"></form>
+    </div>
+    <script type="text/javascript">
+      function selectImage(name) {
+        //Clear all the other effects
+        document.getElementById('icon1').style.border = "none";
+        document.getElementById('icon2').style.border = "none";
+        document.getElementById('icon3').style.border = "none";
+        document.getElementById('icon4').style.border = "none"; 
+        document.getElementById('icon1').setAttribute("class", "icon");
+        document.getElementById('icon2').setAttribute("class", "icon");
+        document.getElementById('icon3').setAttribute("class", "icon");
+        document.getElementById('icon4').setAttribute("class", "icon");
+        var image = document.getElementById(name);
+        image.setAttribute("class", "icon active");
+        image.style.border = "5px solid #42A5F5";
+        if(name == 'icon4'){
+          $('#icon4Upload').click();
+          $( "#icon4Upload" ).change(function() {
+            Parse.initialize("V6NcQkeFHBu6SOcSYJptWFgKzgOiuc2ywEXnmL31", "Xw3yYjXIFL6tVLwN3vhmPJMYLmd4AiJI3mRUjl1l");
+            var input = $("#icon4Upload")[0];
+            var file = input.files[0];
+            var name = "photo.jpg";
+            var parseFile = new Parse.File(name, file);
+            parseFile.save().then(function() {
+            $('#icon4').prop('src', parseFile.url()); //change image src
+            }, function(error) {
+            });
+          });
+        }
+      }
+
+	$( "#others" ).change(function() {
+	  $('#frequency_one').prop('checked', false);
+	  $('#frequency_two').prop('checked', false);
+	  $('#frequency_three').prop('checked', false);
+	});			
+
+	  function editCheckScript(){
+	  	var check = document.getElementById("title").value;
+		var desired = check.replace(/[^\w\s]/gi, '');
+		if(check.localeCompare(desired) == 0){
+			editHabit();
+		}
+		else{
+			alert('Your title contains illegal characters, please change it.');
+		}
+	  }
+    </script>
+  </body>
+</html>

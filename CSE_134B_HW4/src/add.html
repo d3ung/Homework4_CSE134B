@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Add a habit</title>
+    <link rel="stylesheet" href="../css/forms.css">
+    <script type="text/javascript" src="../js/parse-1.6.7.min.js"></script>
+    <script type="text/javascript" src="../js/addHabit.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+
+  </head>
+  <body onload="checkLogin()">
+    
+    <div class="forms">
+      <h2>Add A Habit</h2>
+      <form method="post">
+        <p><label><span id="title_text">Habit Title</span></label></p>
+        <p><input id="title" type="text" name="fullname" placeholder="i.e. Run for 30 minutes" maxlength="30"></p>
+        
+        <p><label>Habit Icon</label></p>
+        <center>
+        <img id="icon1" class="icon" onclick="selectImage('icon1');" src="../img/sleep.jpg" alt="sleep image"/>
+        <img id="icon2" class="icon" onclick="selectImage('icon2');" src="../img/salad.jpg" alt="eat image"/>
+        <img id="icon3" class="icon" onclick="selectImage('icon3');" src="../img/run.jpg" alt="run image"/>
+        <img id="icon4" class="icon" onclick="selectImage('icon4');" src="../img/add.png" alt="find an image"/>
+        <input type="file" style="display:none;" onchange="checkUpload('icon4');" name="selection" id="icon4Upload" accept="image/jpeg"/>
+        </center>
+        <p><label>Weekly Frequency</label></p>
+        <div id="ck-button">
+          <label> <input id="sunday" type="checkbox" name="date" value="sunday"><span>Sun</span></label>
+          <label> <input id="monday" type="checkbox" name="date" value="monday"><span>Mon</span></label>
+          <label> <input id="tuesday" type="checkbox" name="date" value="tuesday"><span>Tues</span></label>
+          <label> <input id="wednesday" type="checkbox" name="date" value="wednesday"><span>Wed</span></label>
+          <label> <input id="thursday" type="checkbox" name="date" value="thursday"><span>Thur</span></label>
+          <label> <input id="friday" type="checkbox" name="date" value="friday"><span>Fri</span></label>
+          <label> <input id="saturday" type="checkbox" name="date" value="saturday"><span>Sat</span></label>
+        </div>
+      
+        <p><label>Daily Frequency</label></p>
+        <div id="daily-button">
+          <label> <input id="frequency_one" onclick="clearOther1();" type="checkbox" name="day" value="one"><span>1</span></label>
+          <label> <input id="frequency_two" onclick="clearOther2();" type="checkbox" name="day" value="two"><span>2</span></label>
+          <label> <input id="frequency_three" onclick="clearOther3();" type="checkbox" name="day" value="three"><span>3</span></label>
+          <span id="times">Times</span>
+        </div>
+        
+        <p><label><span id="others_text">Others: </span></label></p>
+        <p><input id="others" type="text" name="day" placeholder="More than 3 times"></p>
+        
+        <p id="add_buttons"><input id="cancel" type="button" value="Cancel" onclick="cancelAddHabit();"><input id="save" type="button" value="Save It" onclick="checkScript()"></p>        
+      </form>
+
+    </div>
+    
+    <script type="text/javascript">
+      function selectImage(name) {
+        //Clear all the other effects
+        document.getElementById('icon1').style.border = "none";
+        document.getElementById('icon2').style.border = "none";
+        document.getElementById('icon3').style.border = "none";
+        document.getElementById('icon4').style.border = "none";       
+        document.getElementById('icon1').setAttribute("class", "icon");
+        document.getElementById('icon2').setAttribute("class", "icon");
+        document.getElementById('icon3').setAttribute("class", "icon");
+        document.getElementById('icon4').setAttribute("class", "icon");
+        var image = document.getElementById(name);
+        image.setAttribute("class", "icon active");
+        image.style.border = "5px solid #42A5F5";
+      }
+			
+		function checkUpload(uploadIcon) {
+			var imgInput = $("#icon4Upload")[0];
+			if(imgInput.files.length == 1) {
+			if(imgInput.files[0].type == "image/jpeg" && imgInput.files[0].size <= 500 * 1024 ) selectImage(uploadIcon);
+				else {
+					alert("Type of file incorrect or size too large. Please upload an image file of 500kb or less.");
+					imgInput.value = '';
+				}
+			}
+			else {
+				alert("Number of files incorrect. Please only upload one image file.");
+				imgInput.value = '';
+			}
+		}
+      
+      $('#icon4').click(function(){
+        $('#icon4Upload').click();
+      });
+      
+      $( "#icon4Upload" ).change(function() {
+        Parse.initialize("V6NcQkeFHBu6SOcSYJptWFgKzgOiuc2ywEXnmL31", "Xw3yYjXIFL6tVLwN3vhmPJMYLmd4AiJI3mRUjl1l");
+        var input = $("#icon4Upload")[0];
+        var file = input.files[0];
+        var name = "photo.jpg";
+        var parseFile = new Parse.File(name, file);
+        parseFile.save().then(function() {
+          $('#icon4').prop('src', parseFile.url()); //change image src
+        }, function(error) {
+        });
+      });
+      
+      function clearOther1(){
+        document.getElementById('others').value = '';
+        $('#frequency_two').prop('checked', false);
+        $('#frequency_three').prop('checked', false);
+      }
+
+      function clearOther2(){
+        document.getElementById('others').value = '';
+        $('#frequency_one').prop('checked', false);
+        $('#frequency_three').prop('checked', false);
+      }
+      
+      function clearOther3(){
+        document.getElementById('others').value = '';
+        $('#frequency_one').prop('checked', false);
+        $('#frequency_two').prop('checked', false);
+      }
+	  
+	  function checkScript(){
+	  	var check = document.getElementById("title").value;
+		var desired = check.replace(/[^\w\s]/gi, '');
+		if(check.localeCompare(desired) == 0){
+			submitHabit();
+		}
+		else{
+			alert('Your title contains illegal characters, please change it.');
+		}
+	  }
+	  
+      $( "#others" ).change(function() {
+        $('#frequency_one').prop('checked', false);
+        $('#frequency_two').prop('checked', false);
+        $('#frequency_three').prop('checked', false);
+      });   
+
+    </script>
+  </body>
+</html>

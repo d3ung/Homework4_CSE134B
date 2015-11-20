@@ -1,0 +1,3 @@
+function checkImageUpload(inputTag)  {
+	
+}
