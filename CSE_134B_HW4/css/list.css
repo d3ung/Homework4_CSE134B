@@ -63,7 +63,6 @@ body{
 #logOut:active{border: 2px solid gray; background: rgba(33, 72, 100); box-shadow: 0 0 10px gray;}
 #logOut:focus{outline-style:none;}
 
-
 /* phone */
 @media only screen
     and (max-width: 500px) {
@@ -76,4 +75,9 @@ body{
     and (min-width: 500px) {
     section{width:500px;margin: 0 auto;}
     .message{right:60px;bottom:80px;}
+}
+
+hr {
+    color: #1F3B63;
+    opacity: 0.4;
 }
