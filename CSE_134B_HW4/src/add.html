@@ -123,7 +123,8 @@
 		if(check.localeCompare(desired) == 0){
 		  submitHabit();
 		} else {
-		  showAlertDialog('Your title contains illegal characters, please change it.');
+		  showAlertDialog('Your title contains illegal characters, please change it. ' +
+			'Illegal characters are anything but alphanumerics, spaces or underscores.');
 		}
 	}
     

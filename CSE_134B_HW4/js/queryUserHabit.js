@@ -114,7 +114,7 @@ function queryUserHabit() {
       }
     },
     error : function (error) {
-      showAlertDialog("Error " + error.code + ": " + error.message);
+      showAlertDialog("Database error " + error.code + ": " + error.message + ". Please refresh the app and try again.");
     }
   });
 }
@@ -170,7 +170,7 @@ function queryUserHabit2() {
       }
     },
     error : function (error) {
-      showAlertDialog("Error " + error.code + ": " + error.message);
+      showAlertDialog("Database error " + error.code + ": " + error.message + ". Please refresh the ap and try again.");
     }
   });
 }
