@@ -5,13 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Add a habit</title>
     <link rel="stylesheet" href="../css/forms.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <script type="text/javascript" src="../js/parse-1.6.7.min.js"></script>
     <script type="text/javascript" src="../js/addHabit.js"></script>
+		<script type="text/javascript" src="../js/modal.js"></script>
     <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script type="text/javascript" src="../jquery-ui-1.11.4/jquery-ui.min.js"></script>
 
   </head>
-  <body onload="checkLogin()">
+  <body onload="checkLogin(); initializeAlertDialog()">
     
+		<div id="AlertDialog" class="modal"></div>
+		
     <div class="forms">
       <h2>Add A Habit</h2>
       <form method="post">
@@ -74,12 +79,12 @@
 			if(imgInput.files.length == 1) {
 			if(imgInput.files[0].type == "image/jpeg" && imgInput.files[0].size <= 500 * 1024 ) selectImage(uploadIcon);
 				else {
-					alert("Type of file incorrect or size too large. Please upload an image file of 500kb or less.");
+					showAlertDialog("Type of file incorrect or size too large. Please upload an image file of 500kb or less.");
 					imgInput.value = '';
 				}
 			}
 			else {
-				alert("Number of files incorrect. Please only upload one image file.");
+				showAlertDialog("Number of files incorrect. Please only upload one image file.");
 				imgInput.value = '';
 			}
 		}
@@ -125,7 +130,7 @@
 			submitHabit();
 		}
 		else{
-			alert('Your title contains illegal characters, please change it.');
+			showAlertDialog('Your title contains illegal characters, please change it.');
 		}
 	  }
 	  

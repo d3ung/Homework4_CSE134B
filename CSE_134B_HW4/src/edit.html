@@ -5,13 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Edit a habit</title>
     <link rel="stylesheet" href="../css/forms.css">
+		<link rel="stylesheet" href="../css/modal.css">
     <script type="text/javascript" src="../js/parse-1.6.7.min.js"></script>
     <script type="text/javascript" src="../js/queryEditHabit.js"></script>
     <script type="text/javascript" src="../js/jquery.min.js"></script>
     <script type="text/javascript" src="../js/jquery-1.8.3.js"></script>
+		<script type="text/javascript" src="../jquery-ui-1.11.4/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../js/modal.js"></script>
   </head>
-  <body onload="loginCheck(); queryEditHabit()">
-    <div class="forms">
+  <body onload="loginCheck(); queryEditHabit(); initializeAlertDialog()">
+	
+    <div id="AlertDialog" class="modal"></div>
+		
+		<div class="forms">
       <h2>Edit A Habit</h2>
       <form id="edit-forms" method="GET"></form>
     </div>
@@ -45,22 +51,22 @@
         }
       }
 
-	$( "#others" ).change(function() {
-	  $('#frequency_one').prop('checked', false);
-	  $('#frequency_two').prop('checked', false);
-	  $('#frequency_three').prop('checked', false);
-	});			
+			$( "#others" ).change(function() {
+				$('#frequency_one').prop('checked', false);
+				$('#frequency_two').prop('checked', false);
+				$('#frequency_three').prop('checked', false);
+			});			
 
-	  function editCheckScript(){
-	  	var check = document.getElementById("title").value;
-		var desired = check.replace(/[^\w\s]/gi, '');
-		if(check.localeCompare(desired) == 0){
-			editHabit();
-		}
-		else{
-			alert('Your title contains illegal characters, please change it.');
-		}
-	  }
-    </script>
+			function editCheckScript(){
+				var check = document.getElementById("title").value;
+				var desired = check.replace(/[^\w\s]/gi, '');
+				if(check.localeCompare(desired) == 0){
+					editHabit();
+				}
+				else{
+					showAlertDialog('Your title contains illegal characters, please change it.');
+				}
+			}
+			</script>
   </body>
 </html>

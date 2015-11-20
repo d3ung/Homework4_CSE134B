@@ -141,5 +141,5 @@ function checkLogin() {
 }
 
 function cancelAddHabit() {
-    window.location = "./list.html";
+	window.location = "./list.html";
 }

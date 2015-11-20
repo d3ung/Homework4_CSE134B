@@ -61,9 +61,6 @@ body{
 #logOut:active{border: 2px solid gray; background: rgba(33, 72, 100); box-shadow: 0 0 10px gray;}
 #logOut:focus{outline-style:none;}
 
-/* modal dialogs */
-.ui-dialog-titlebar{background:rgba(33, 72, 100, 1.0)}
-.modal{background:rgba(33, 72, 100, 1.0)}
 
 /* phone */
 @media only screen
