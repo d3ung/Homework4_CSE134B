@@ -126,7 +126,7 @@ function queryUserHabit2() {
   var query = new Parse.Query(Habit);
   var date = new Date();
   var numberOfToday = date.getDay();
-  var weekdayString = "Other Habits";
+  var weekdayString = "Other Habits<hr>";
 
   query.equalTo("user", objectId);
   query.find({
