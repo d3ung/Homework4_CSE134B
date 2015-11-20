@@ -92,13 +92,13 @@ function submitHabit() {
       }
 
       if (weekdaysSelected == 0 && frequency <= 0) {
-        alert('Please select your weekly frequency and also input or select your daily frequency');
+        showAlertDialog('Please select your weekly frequency and also input or select your daily frequency');
       } else if (weekdaysSelected == 0) {
-        alert('Please select some of the weekly to track your habits.');
+        showAlertDialog('Please select some of the weekly to track your habits.');
       } else if (nanFlag) {
-        alert('Please input a number and not characters for your daily frequency.');
+        showAlertDialog('Please input a number and not characters for your daily frequency.');
       } else if (frequency <= 0) {
-        alert('Please input or select your daily frequency to a value greater than 0.');
+        showAlertDialog('Please input or select your daily frequency to a value greater than 0.');
       } else {
         Habit.save({
           Title : document.getElementById("title").value,
@@ -124,13 +124,13 @@ function submitHabit() {
           error : function (Habit, error) {
             // The save failed.
             // error is a Parse.Error with an error code and message.
-            alert("Error: " + error.code + " " + error.message);
+            showAlertDialog("Error: " + error.code + " " + error.message);
           }
         });
       }
     },
     error : function (error) {
-      alert("Error: " + error.code + " " + error.message);
+      showAlertDialog("Error: " + error.code + " " + error.message);
     }
   });
 }

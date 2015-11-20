@@ -106,40 +106,39 @@
         });
       });
       
-      function clearOther1(){
-        document.getElementById('others').value = '';
-        $('#frequency_two').prop('checked', false);
-        $('#frequency_three').prop('checked', false);
-      }
+	function clearOther1(){
+		document.getElementById('others').value = '';
+		$('#frequency_two').prop('checked', false);
+		$('#frequency_three').prop('checked', false);
+	}
 
-      function clearOther2(){
-        document.getElementById('others').value = '';
-        $('#frequency_one').prop('checked', false);
-        $('#frequency_three').prop('checked', false);
-      }
+	function clearOther2(){
+		document.getElementById('others').value = '';
+		$('#frequency_one').prop('checked', false);
+		$('#frequency_three').prop('checked', false);
+	}
       
-      function clearOther3(){
-        document.getElementById('others').value = '';
-        $('#frequency_one').prop('checked', false);
-        $('#frequency_two').prop('checked', false);
-      }
+	function clearOther3(){
+		document.getElementById('others').value = '';
+		$('#frequency_one').prop('checked', false);
+		$('#frequency_two').prop('checked', false);
+	}
     
-    function checkScript(){
-      var check = document.getElementById("title").value;
-    var desired = check.replace(/[^\w\s]/gi, '');
-    if(check.localeCompare(desired) == 0){
-      submitHabit();
-    }
-    else{
-      showAlertDialog('Your title contains illegal characters, please change it.');
-    }
-    }
+	function checkScript(){
+		var check = document.getElementById("title").value;
+		var desired = check.replace(/[^\w\s]/gi, '');
+		if(check.localeCompare(desired) == 0){
+		  submitHabit();
+		} else {
+		  showAlertDialog('Your title contains illegal characters, please change it.');
+		}
+	}
     
-      $( "#others" ).change(function() {
-        $('#frequency_one').prop('checked', false);
-        $('#frequency_two').prop('checked', false);
-        $('#frequency_three').prop('checked', false);
-      });   
+	$( "#others" ).change(function() {
+	$('#frequency_one').prop('checked', false);
+	$('#frequency_two').prop('checked', false);
+	$('#frequency_three').prop('checked', false);
+	});   
 
     </script>
   </body>
