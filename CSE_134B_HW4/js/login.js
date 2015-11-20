@@ -26,7 +26,7 @@ function login(evt) {
       Parse.User.logIn(username, password, {
         success : function (user) {
           document.getElementById("loginForm").submit();
-          location.href = "list.html";
+          location.href = "./list.html";
         },
         error : function (user, error) {
           alert("Login Error: " + error.code + " " + error.message);
@@ -53,7 +53,7 @@ function register(evt) {
   user.set("password", password);
   user.set("email", email);
   user.set("notification", notification);
-    user.set("notitoday", false);
+  user.set("notitoday", false);
 
   user.signUp(null, {
     success : function (user) {
@@ -69,6 +69,6 @@ function register(evt) {
 function checkLogin() {
   Parse.initialize("V6NcQkeFHBu6SOcSYJptWFgKzgOiuc2ywEXnmL31", "Xw3yYjXIFL6tVLwN3vhmPJMYLmd4AiJI3mRUjl1l");
   if (Parse.User.current() != null) {
-    location.href = "list.html";
+    location.href = "./list.html";
   }
 }
