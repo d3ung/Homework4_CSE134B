@@ -67,8 +67,11 @@ CSE 134B HW4
 	  3. Redirection of html pages when logged in or not.
 			Reason: We added redirection to certain pages since it makes no sense for a user to be in a page they shouldn't be. (e.g. logged in user going to the login page, or a logged-out user looking at a habit list)
 
-###Things to Consider:
-
-	####A. Add an Start/End date for habits, so that the user doesn’t have to add this habit every week, get reminded when they’ve stopped needing to do the habit, or won’t need to start the habit at the time of creation.
-
-	####B. For grading purposes, we have reset the day by the minute instead of an actual day so that the grader could tell what would happen if another day had occur and the same habit is also schedule for that day.
+       ####F. Notifications
+	Notifications were a hotly debated topic during project 4, due to the number of possible solutions and expectations. The push notification is the best possible solution for this kind of application to re-engage users if they have forgotten to update their habit statuses, etc. As much as we would have liked to implement push notifications, several things made it difficult for us to do that:
+         1. Many push notification services only work on native applications. There, the service can target push notifications to certain channels of app installations. Since our app is a web app, we don't have app installations, and therefore can't use those services.
+         2. Other push notification services like Roost require an HTTP/HTTPS connection, something we don't have in this stage of development, so these solutions are not feasible.
+         3. The push notification services we are closest to being able to use would not support FireFox.
+	Due to the limitations we have in this stage of development, the most consistent and realistic approach is doing in-browser notifications. For this, we chose to use the library notifyJS. At a respectable 13k size, notifyJS provides great browser support (Chrome (+mobile), Firefox, Internet Explorer, and Safari (+mobile)), and a good amount of options to customize the look and feel of browser notifications. 
+	A user will be given notifications in browser when they complete a task for the day, have an empty habit list, refresh the habit page, and when the time is between 6 and midnight to remind users that they should update their habit status before the new day of habits starts.
+>>>>>>> Stashed changes
