@@ -13,6 +13,16 @@ function initializeSettingsDialog() {
 		buttons : [{
 				text : "Save",
 				click : function () {
+                    
+                    //update notifications for users
+                    var noti = $('#notifChance').val();
+                    
+                    var notiBool = (noti === 'true');
+                    
+                    Parse.User.current().set('notification', notiBool);
+                    
+                    Parse.User.current().save();
+                    
 					$(this).dialog("close");
 					//Add in parse settings save stuff here
 				}
@@ -26,9 +36,18 @@ function initializeSettingsDialog() {
 	});
 
 	// Can add additional settings options here, just follow the format
+	// Can add additional settings options here, just follow the format
 	var settingsHTML =
+<<<<<<< HEAD
 		' <input type = "checkbox" id = "chkNotifications" value = "notifications" />	' +
 		' <label for = "chkNotifications">Receive Notifications</label>	';
+=======
+        ' <label for = "notifChance">Receive Notifications?</label>' +
+        ' <select id = "notifChance" name = "notifications"> ' +
+        ' <option value = "true">Yes</option>'+
+        ' <option value = "false">No</option></select> '
+		;
+>>>>>>> origin/master
 
 	$("#ChangeSettingsDialog").append(settingsHTML);
 }

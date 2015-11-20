@@ -12,13 +12,22 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
   <script type="text/javascript" src="../jquery-ui-1.11.4/jquery-ui.min.js"></script>
   <script type="text/javascript" src="../js/modal.js"></script>
+  <script type="text/javascript" src ="../js/notify.min.js"></script>
 </head>
+<<<<<<< HEAD
 <body onload="loginCheck(); queryUserHabit(); initializeSettingsDialog(); 
 	initializeConfirmDialog(); initializeNotificationDialog(); initializeAlertDialog()">
 	<button type="button" id="logOut" onclick="logUserOut();" title="logOut"><strong>Log&nbspOut</strong></button>
+=======
+<body onload="loginCheck(); queryUserHabit(); queryUserHabit2();">
+	<button type="button" id="logOut" onclick="logUserOut();" title="logOut">Log Out</button>
+>>>>>>> origin/master
     <section>
         <h1 id="display-Day"></h1>
         <ul id="habit-list">
+        </ul>
+		<h1 id="display-Day2"></h1>
+        <ul id="habit-list2">
         </ul>
     </section>
 
@@ -33,11 +42,20 @@
     <button type="button" id="addHabit" onclick="location.href='add.html'" title="add habit">+</button>
 
     <script type="text/javascript">
+<<<<<<< HEAD
         function showMsg(element){
             var msgElement = (element.parentNode.parentNode.getElementsByClassName("message"))[0];
             // alert(msgElement.innerHTML);
             msgElement.style.visibility="visible";
         }
+=======
+        $(".op-del").click(function handler() {
+          showConfirmDialog(this);
+        });
+
+        initializeSettingsDialog();
+        initializeConfirmDialog();
+>>>>>>> origin/master
     </script>
 </body>
 </html>
