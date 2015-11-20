@@ -228,10 +228,14 @@ function displayProgress(element, barId, completedId) {
 			var streaksUpdatedAt = new Date(habit.attributes.streaksUpdatedAt);
 			var todayString = today.toDateString();
 			var streaksUpdatedAtString = streaksUpdatedAt.toDateString();
-			// For testing only. 1 day = 1 minute
+			
+			/*****/
+			// CRITICAL: For testing only. 1 day = 1 minute
 			if (streaksUpdatedAtString == todayString &&
 				streaksUpdatedAt.getUTCHours() == today.getUTCHours() &&
 				streaksUpdatedAt.getUTCMinutes() == today.getUTCMinutes()) {
+			/*****/
+				// CRITICAL: Uncomment the line below to test daily checking instead of minute-checking
 				//if(streaksUpdatedAtString == todayString) {
 				if (successCount < freq) {
 					successCount++;
@@ -277,7 +281,21 @@ function updateDailyCounts(habit) {
 	var streaksUpdatedAtString = streaksUpdatedAt.toDateString();
 	var dayArray = habit.attributes.day;
 
-	// For testing only. Update fields if new minute (1 day = 1 minute)
+	// CRITICAL: Update field if new day. Uncomment this section to test.
+	/*
+		if (dayArray[todayDay] == 1) {
+		if (streaksUpdatedAtString != todayString) {
+			habit.set("habitTotal", habit.attributes.habitTotal + 1);
+			habit.set("successCount", 0); // reset daily count
+			habit.set("completed", false);
+			habit.set("streaksUpdatedAt", today);
+			habit.save();
+		}
+	}
+	*/
+	
+	/****/
+	// CRITICAL: For testing only. Update fields if new minute (1 day = 1 minute)
 	if (dayArray[todayDay] == 1) {
 		if (streaksUpdatedAtString != todayString ||
 			streaksUpdatedAt.getUTCHours() != today.getUTCHours() ||
@@ -289,6 +307,7 @@ function updateDailyCounts(habit) {
 			habit.save();
 		}
 	}
+	/****/
 }
 
 /* Deal with cases where user edits habits  */
