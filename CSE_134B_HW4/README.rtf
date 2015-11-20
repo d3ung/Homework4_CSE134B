@@ -4,54 +4,68 @@ CSE 134B HW4
 	---Big thanks to Team XYZ for the base code of this assignment!---
 
 ###Bugs and Compatibility:
-	###A. Bugs
+	####A. Bugs
 		
-	###B. Compatibility
+	####B. Compatibility
 		1. Internet Explorer
 			- Parse, our backend, will NOT function in IE9 unless the js is served up with https. So far we've found no way to do this.
-	
+
+
+###Critical Notes:
+	####A. This is mainly regarding queryUserHabit.js. The application is supposed to work with day-oriented goals. We have implemented this functionality correctly in the stated file. However, for testing purposes (both for the graders and for ourselves) we have changed daily-updates to minutely-updates (by the minute instead of by the day). We have left this code in the file since we believe it will help the graders grade more easily. Again, our code for daily-updates is also inside - but they are commented out. The logic between daily-updates and minutely-updates is synonymous, so you can and should expect the daily-updates to work similarly to the minutely-updates.
+
 ###Implementations/Changes:
 	####A. UI
 		1. Color Scheme. 
-		2. The icons of the email, password, and username were replaced with ones that had a consistent black circle background and a white image in the center. 
-			Reason: The provided icons were of three different “backgrounds” a circle, square, and object only.
+		2. The icons of the email, password, and username were replaced with ones that had consistent black circle backgrounds and white images in the center. 
+			Reason: The provided icons were of three different “backgrounds”: a circle, square, and object only.
 		3. Arrangement of the days of the week. We extended the width of the add/edit form to 550px so that the entire week appears on one line (this doesn’t apply to when the browser width is smaller than 550px, it would readjust accordingly). 
-			Reason: This is to create a more uniform feel to the function.
-    4. Other minor style changes, i.e. padding and spacing between objects throughtout the pages.
-    5. Resized and realligned the three buttons in list.html (done, edit, and delete).
-		6. Added modal dialogs instead of alerts for ability to style and match the overall theme of the app, also for other dialogs like settings change
+			Reason: To create a more uniform feel to the function.
+		4. Other minor style changes, i.e. padding and spacing between objects throughtout the pages.
+		5. Resized and realigned the three buttons in list.html (done, edit, and delete).
+		6. Added modal dialogs instead of alerts for ability to style and match the overall theme of the app; also for other dialogs like settings change
+		7. We created a registration form on the login page. (See ####E. below)
         
 	####B. Flow
-        1. We decided to add [cancel] buttons into the form in the add and edit habit pages to enhance the user flow. This would aide the user if they decide to not add a habit at all or not save the changes they initially intended, so their unsaved changes would be discarded. 
-        2. Thinking about the overall flow of the site it did not make sense to us that after loging in, the user would be directed to the welcome.html page where they could only add a habit. Thus, our team decided to add a [add] button in the list.html and make that the landing page after the user logs in. So as it stands (welcome.html), in terms of design, we had no true use for it. 
+        1. We added [cancel] buttons in the add and edit habit pages to enhance user flow. This will aide users if they decide not to add a habit or not to save the changes they initially intended, so their unsaved changes are discarded. 
+        2. We concluded that it makes little sense having the user enter a welcome page (welcome.html) that only shows an add habit button. Thus, we decided to add a [add] button in the list.html and make that the landing page after the user logs in. This makes the flow more fluid and intuitive since users immediately see their active habits after logging in. As it stands, in terms of design, we have no true use for welcome.html. 
 
 	####C. Forms Page
 	  1. Habit Title text box limited to 30 characters
 			Reason: We limit the title to 30 characters since anything more will make the text overlap with the icon on the habit list page.
 	  2. Highlight the file upload icon and also changing the image to selected icon.
-			Reason: We have highlighted the 4th icon of the page when selected to indicate that the user chooses to have their own customize icon. We have also change the 4th icon into the user’s selected icon to demonstrate how it will look like. This would give the user a feel of what they are uploading and could be a determining factor to either keep or change to another icon.
-	  3. Uncheck all other daily frequency that weren’t selected when a frequency is either inputted or selected.
-			Reason: We unchecked all of the other daily frequencies when one is either selected or inputted to eliminate confusion. Having multiple selections of daily frequencies would only confuse the user of what daily frequency they want.
+			Reason: We have highlighted the 4th icon of the page when selected to indicate that the user chooses to have their own custom icon. The 4th icon also dynamically changes to whatever image the user decides to upload. This lets users see what they are uploading and could be a determining factor to either keep or change to another icon.
+	  3. Uncheck all other daily frequency that weren’t selected when a frequency is either inputed or selected.
+			Reason: We unchecked all of the other daily frequencies when one is either selected or inputed to eliminate confusion. Having simultaneous selections of daily frequencies will only confuse users of what daily frequency they selected.
 	  4. Guards for unselected fields and abnormal text.
-			Reason: The reason why we add guards to our forms is because users simply cannot be trusted at all. It would not make any sense for a user to input negative daily frequency or select none of the weekly frequency, if they want to keep track of their habits.
+			Reason: We added guards to our forms since users cannot be trusted. It would not make any sense for a user to input a negative daily frequency or select none of the weekly frequency, if they want to keep track of their habits.
 
 	####D. List Page
-	  1. Display today’s habits depending on the user’s weekly frequency of the habits. Display the rest of the habits that does not occur for today.
-			Reason: We change from having all of the habits displayed in a mixed manner into only the ones occurring today since we do not want to confuse the users of what habits they have to keep track of for today. The other habits are displayed in a well distinguishable section so that the user could choose to update or delete a habit.
-	  2. Change best records and number of days in a row into amount of time completed and total attempts.
-			Reason: The reason why we change this is because if a user does not complete their habits for the day it would reset their current streak to 0 and they would have to start all over again. We don’t want a user to feel defeated after a fail attempt, so we decided to change to this format just to make the user feel that a missed attempt is not as bad as they think.
-	  3. Progress bar fills up for every attempt until the habit’s frequency is met.
-			Reason: We made this change because we are keeping track of the user’s habit for today, so in order to keep track of their daily frequency we use the check button to fill in how many times they have did this habit until completion.
+	  1. Depending on which days the user has selected for each habit, the page splits the user's habits into an active and inactive list.
+			Reason: Instead of listing the habits in a unorganized or random manner, having an active and inactive list is more intuitive and helps reduce the user's burden of having to keep track of their own habits.
+	  2. Remove the success button on inactive habits.
+			Reason: This helps accentuate the the point that users do not, and should not, have to worry about their inactive habits. By hiding the success button, users immediately know that these habits are not what they should be focusing on. Furthermore, users can edit inactive habits to make them active at any point and see immediate changes in their habit lists.
+	  3. Change current streak and best streak to amount of times completed and total attempts.
+			Reason: If a user does not complete their habits for the day it will reset their current streak to 0 which can be demotivating, especially with a very obvious visual cue (the progress bar) that only updates once a day. Instead, our design shifts the purely long term goal of streaks into more interactive, short term goals of daily goals. The progress bar reflects this, which makes the site more interactive and engaging as well.
+			Furthermore, our design reflects the user's consistency in completing daily goals - something the streaks UI does not do. Also, streaks do little to provide a sense of positive reinforcement while our design does so in a much more engaging and helpful manner.
+	  4. Progress bar fills up for every attempt until the habit’s frequency is met.
+			Reason: As mentioned above, we made the progress bar more dynamic since it reflects the user's daily progress. This is much more interesting to the user than a streak-bar that only moves once a day. In this sense, it also feels more intuitive to the user.
+	  5. Specific use-cases of habit success/total counts.
+	  	  a) The total attempts for an active habit increments only when a user uses our application for that day. Thus for days where the user does not visit the application, the total attempts will not increase.
+	  	  	  Reason: Users who use our app have the intention of developing habits - we want to help them achieve this through positive reinforcement. Users who forget to use the app for a certain day may feel disatisfied if they see that their forgetfulness was punished. Furthermore, by only counting habits when users use the application, users may see more value in the app since it directly reflects their own motivations.
+	  	  b) Making an inactive habit active will increase the total attempts of that habit exactly once per day.
+	  	  	  Reason: Users who decide to work on a habit for a certain day that they did not originally plan can do so by editing the habit's active days. Swapping between inactive and active will not increase the count any more than once since that would defeat the purpose of the app.
+	  	  c) Changing frequency counts (i.e. daily goals) of a habit will implicitly change the completion of that goal for that specific day. (e.g. if a user whose progress on a habit is 5/10 times in a particular day decides to change the goal to 5, the habit will become completed - this is true if for the converse as well)
+	  	  	  Reason: This functionality is intuitive and behaves in the benefit of the user's intentions.
 
 	####E. Login and Logout
 	  1. Sign Up and login page
-			Reason: We have implemented our own sign up and login page so that we could keep track of a user that would use this application. Adding, editing, displaying, and deleting habits would only affect this user.
+			Reason: We created our own sign up and login page so that users can create accounts and keep track of their own habits easily and manageably. This also lets us deliver unique habits to each of our users, so that adding, editing, displaying, and deleting habits will affect only a certain user.
 	  2. Log Out
+			Reason: For privacy and safety reasons, users can log out at any time if they wish. 
 	  3. Redirection of html pages when logged in or not.
-			Reason: We added redirection to pages since it makes no sense for a user to be in a page without credential or be in a login page when they are logged in.
+			Reason: We added redirection to certain pages since it makes no sense for a user to be in a page they shouldn't be. (e.g. logged in user going to the login page, or a logged-out user looking at a habit list)
 
 ###Things to Consider:
 
-	1. Add an Start/End date for habits, so that the user doesn’t have to add this habit every week, get reminded when they’ve stopped needing to do the habit, or won’t need to start the habit at the time of creation.
-
-
+	####A. Add an Start/End date for habits, so that the user doesn’t have to add this habit every week, get reminded when they’ve stopped needing to do the habit, or won’t need to start the habit at the time of creation.
