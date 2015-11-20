@@ -1,4 +1,4 @@
-﻿README
+README
 Team Foodie 101 
 CSE 134B HW4
 	---Big thanks to Team XYZ for the base code of this assignment!---
@@ -57,7 +57,7 @@ CSE 134B HW4
 	  	  	  Reason: Users who decide to work on a habit for a certain day that they did not originally plan can do so by editing the habit's active days. Swapping between inactive and active will not increase the count any more than once since that would defeat the purpose of the app.
 	  	  c) Changing frequency counts (i.e. daily goals) of a habit will implicitly change the completion of that goal for that specific day. (e.g. if a user whose progress on a habit is 5/10 times in a particular day decides to change the goal to 5, the habit will become completed - this is true if for the converse as well)
 	  	  	  Reason: This functionality is intuitive and behaves in the benefit of the user's intentions.
-	  3. Alert box with refresh onclick of any success-buttons when a new day is detected. (Since we left minutely-updates in, this will occur when a new minute is detected). This will refresh the page to show a new set of active habits as well as update counts and progress.
+	  6. Alert box with refresh onclick of any success-buttons when a new day is detected. (Since we left minutely-updates in, this will occur when a new minute is detected). This will refresh the page to show a new set of active habits as well as update counts and progress. In order to test whether habits will appear in the correct list (active/inactive) on a new day, you can create a habit with different days selected and edit them, or uncomment the daily-updates code and comment out the minutely-updates.
 
 	####E. Login and Logout
 	  1. Sign Up and login page
@@ -66,16 +66,9 @@ CSE 134B HW4
 			Reason: For privacy and safety reasons, users can log out at any time if they wish. 
 	  3. Redirection of html pages when logged in or not.
 			Reason: We added redirection to certain pages since it makes no sense for a user to be in a page they shouldn't be. (e.g. logged in user going to the login page, or a logged-out user looking at a habit list)
-       ####F. Notifications
-	Notifications were a hotly debated topic during project 4, due to the number of possible solutions and expectations. The push notification is the best possible solution for this kind of application to re-engage users if they have forgotten to update their habit statuses, etc. As much as we would have liked to implement push notifications, several things made it difficult for us to do that:
-         1. Many push notification services only work on native applications. There, the service can target push notifications to certain channels of app installations. Since our app is a web app, we don't have app installations, and therefore can't use those services.
-         2. Other push notification services like Roost require an HTTP/HTTPS connection, something we don't have in this stage of development, so these solutions are not feasible.
-         3. The push notification services we are closest to being able to use would not support FireFox.
-	Due to the limitations we have in this stage of development, the most consistent and realistic approach is doing in-browser notifications. For this, we chose to use the library notifyJS. At a respectable 13k size, notifyJS provides great browser support (Chrome (+mobile), Firefox, Internet Explorer, and Safari (+mobile)), and a good amount of options to customize the look and feel of browser notifications. 
-	A user will be given notifications in browser when they complete a task for the day, have an empty habit list, refresh the habit page, and when the time is between 6 and midnight to remind users that they should update their habit status before the new day of habits starts.
-
 
 ###Things to Consider:
 
 	####A. Add an Start/End date for habits, so that the user doesn’t have to add this habit every week, get reminded when they’ve stopped needing to do the habit, or won’t need to start the habit at the time of creation.
-       ####B. For grading purposes, we have reset the day by the minute instead of an actual day so that the grader could tell what would happen if another day had occur and the same habit is also schedule for that day.
+
+	####B. For grading purposes, we have reset the day by the minute instead of an actual day so that the grader could tell what would happen if another day had occur and the same habit is also schedule for that day.
