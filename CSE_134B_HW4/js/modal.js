@@ -1,4 +1,4 @@
-/***** Define settings dialog stuff *****/
+/***** Define settings dialogue stuff *****/
 
 function initializeSettingsDialog() {
   $("#ChangeSettingsDialog").dialog({
@@ -13,16 +13,11 @@ function initializeSettingsDialog() {
     buttons : [{
         text : "Save",
         click : function () {
-                    
-                    //update notifications for users
-                    var noti = $('#notifChance').val();
-                    
-                    var notiBool = (noti === 'true');
-                    
-                    Parse.User.current().set('notification', notiBool);
-                    
-                    Parse.User.current().save();
-                    
+		  //update notifications for users
+		  var noti = $('#notifChance').val();
+		  var notiBool = (noti === 'true');
+		  Parse.User.current().set('notification', notiBool);
+		  Parse.User.current().save();
           $(this).dialog("close");
           //Add in parse settings save stuff here
         }
@@ -79,7 +74,6 @@ function initializeConfirmDialog() {
       }
     ]
   });
-
   $("#ConfirmDeleteDialog").text(" Are you sure you want to delete this habit?");
 }
 

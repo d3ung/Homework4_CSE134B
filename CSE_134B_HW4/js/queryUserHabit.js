@@ -220,13 +220,10 @@ function displayProgress(element, barId, completedId) {
             var freq = habit.attributes.freq;
             var habitTotal = habit.attributes.habitTotal;
             var timesCompleted = habit.attributes.timesCompleted;
-
             var today = new Date();
             var streaksUpdatedAt = new Date(habit.attributes.streaksUpdatedAt);
             var todayString = today.toDateString();
-            var streaksUpdatedAtString = streaksUpdatedAt.toDateString();
-
-        
+            var streaksUpdatedAtString = streaksUpdatedAt.toDateString();     
             // For testing only. 1 day = 1 minute
             if(streaksUpdatedAtString == todayString && 
                     streaksUpdatedAt.getUTCHours() == today.getUTCHours() &&
@@ -237,9 +234,9 @@ function displayProgress(element, barId, completedId) {
                     if(successCount == freq) {
                         timesCompleted++;
                         habit.set("timesCompleted", timesCompleted);
-            habit.set("completed", true);
-            //give a user a success notification
-            $.notify("You have completed habit '" + habit.attributes.Title + "'!", 'success', {elementPosition: 'top'});
+						habit.set("completed", true);
+						//give a user a success notification
+						$.notify("You have completed habit '" + habit.attributes.Title + "'!", 'success', {elementPosition: 'top'});
                     }
                     habit.set("successCount", successCount);
                     habit.save();
@@ -255,8 +252,8 @@ function displayProgress(element, barId, completedId) {
                 }
             } else {
                 // Force refresh when new day, already complete notification
-        window.alert("A new day has begun! Your habits have been refreshed!");
-        window.location.reload(false);
+				window.alert("A new day has begun! Your habits have been refreshed!");
+				window.location.reload(false);
             }
         }
     });
@@ -267,24 +264,10 @@ function updateDailyCounts(habit) {
     var todayDay = today.getUTCDay();
     var updatedAt = new Date(habit.updatedAt);
     var streaksUpdatedAt = new Date(habit.attributes.streaksUpdatedAt);
-
     var todayString = today.toDateString();
     var updatedAtString = updatedAt.toDateString();
     var streaksUpdatedAtString = streaksUpdatedAt.toDateString();
-
     var dayArray = habit.attributes.day;
-
-    /*
-    // Update fields if new day
-    if(dayArray[todayDay] == 1) {
-        if(streaksUpdatedAtString != todayString) {
-            habit.set("habitTotal", habit.attributes.habitTotal + 1);
-            habit.set("successCount", 0);  // reset daily count
-            habit.set("streaksUpdatedAt", today);
-            habit.save();
-        }
-    }
-    */
 
     // For testing only. Update fields if new minute (1 day = 1 minute)
     if(dayArray[todayDay] == 1) {
@@ -333,11 +316,9 @@ function updateEdits(habit) {
 
 function dateDiffInDays(d1, d2) {
     var millisecondsPerDay = 1000 * 60 * 60 * 24;
-
     // Discard the time and time-zone information.
     var utc1 = Date.UTC(d1.getFullYear(), d1.getMonth(), d1.getDate());
     var utc2 = Date.UTC(d2.getFullYear(), d2.getMonth(), d2.getDate());
-
     return Math.floor((utc2 - utc1) / millisecondsPerDay);
 }
 

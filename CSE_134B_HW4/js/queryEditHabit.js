@@ -73,9 +73,9 @@ function queryEditHabit() {
             $('#edit-forms').append('<p><label><span id="title_text">' + 'Habit Title' + '</span></label></p>' +
               '<p><input id="title" type="text" name="fullname" value="' + title + '"></p>' +
               '<p><label>Habit Icon</label></p>' + '<center>' +
-              '<img id="icon1" class="icon" onload="initialSelect(\'../img/sleep.jpg\');" onclick="selectImage(\'icon1\');" src="../img/sleep.jpg" alt="sleep image"/>' +
-              '<img id="icon2" class="icon" onload="initialSelect(\'../img/salad.jpg\');" onclick="selectImage(\'icon2\');" src="../img/salad.jpg" alt="eat image"/>' +
-              '<img id="icon3" class="icon" onload="initialSelect(\'../img/run.jpg\');" onclick="selectImage(\'icon3\');" src="../img/run.jpg" alt="run image"/>' +
+              '<img id="icon1" class="icon" onclick="selectImage(\'icon1\');" src="../img/sleep.jpg" alt="sleep image"/>' +
+              '<img id="icon2" class="icon" onclick="selectImage(\'icon2\');" src="../img/salad.jpg" alt="eat image"/>' +
+              '<img id="icon3" class="icon" onclick="selectImage(\'icon3\');" src="../img/run.jpg" alt="run image"/>' +
               '<img id="icon4" type="button" class="icon" onclick="selectImage(\'icon4\');" src="../img/add.png" alt="find a image"/>' +
               '<input type="file" style="display:none;" name="selection" id="icon4Upload" value="" accept="image/jpeg"/>' + '</center>' +
               '<p><label>Weekly Frequency</label></p>' +
@@ -92,10 +92,6 @@ function queryEditHabit() {
       alert("Error: " + error.code + " " + error.message);
     }
   });
-}
-
-function initialSelect(iconSrc) {
-  //TODO: Highlight image
 }
 
 function editHabit() {
