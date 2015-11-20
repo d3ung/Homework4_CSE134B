@@ -1,4 +1,4 @@
-README
+﻿README
 Team Foodie 101 
 CSE 134B HW4
 	---Big thanks to Team XYZ for the base code of this assignment!---
@@ -23,6 +23,30 @@ Implementations/Changes:
            button in the list.html and make that the landing page after the user logs in. 
            So as it stands (welcome.html), in terms of design, we had no true use for it. 
 
+	C. Forms Page
+	  1. Habit Title text box limited to 30 characters
+			Reason: We limit the title to 30 characters since anything more will make the text overlap with the icon on the habit list page.
+	  2. Highlight the file upload icon and also changing the image to selected icon.
+			Reason: We have highlighted the 4th icon of the page when selected to indicate that the user chooses to have their own customize icon. We have also change the 4th icon into the user’s selected icon to demonstrate how it will look like. This would give the user a feel of what they are uploading and could be a determining factor to either keep or change to another icon.
+	  3. Uncheck all other daily frequency that weren’t selected when a frequency is either inputted or selected.
+			Reason: We unchecked all of the other daily frequencies when one is either selected or inputted to eliminate confusion. Having multiple selections of daily frequencies would only confuse the user of what daily frequency they want.
+	  4. Guards for unselected fields and abnormal text.
+			Reason: The reason why we add guards to our forms is because users simply cannot be trusted at all. It would not make any sense for a user to input negative daily frequency or select none of the weekly frequency, if they want to keep track of their habits.
+
+	D. List Page
+	  1. Display today’s habits depending on the user’s weekly frequency of the habits. Display the rest of the habits that does not occur for today.
+			Reason: We change from having all of the habits displayed in a mixed manner into only the ones occurring today since we do not want to confuse the users of what habits they have to keep track of for today. The other habits are displayed in a well distinguishable section so that the user could choose to update or delete a habit.
+	  2. Change best records and number of days in a row into amount of time completed and total attempts.
+			Reason: The reason why we change this is because if a user does not complete their habits for the day it would reset their current streak to 0 and they would have to start all over again. We don’t want a user to feel defeated after a fail attempt, so we decided to change to this format just to make the user feel that a missed attempt is not as bad as they think.
+	  3. Progress bar fills up for every attempt until the habit’s frequency is met.
+			Reason: We made this change because we are keeping track of the user’s habit for today, so in order to keep track of their daily frequency we use the check button to fill in how many times they have did this habit until completion.
+
+	E. Login and Logout
+	  1. Sign Up and login page
+			Reason: We have implemented our own sign up and login page so that we could keep track of a user that would use this application. Adding, editing, displaying, and deleting habits would only affect this user.
+	  2. Log Out
+	  3. Redirection of html pages when logged in or not.
+			Reason: We added redirection to pages since it makes no sense for a user to be in a page without credential or be in a login page when they are logged in.
 
 Things to Consider:
 
