@@ -8,7 +8,7 @@ function queryUserHabit() {
   var weekdayString = "Habit List";
 
   // Get the day for today
-  /*switch (numberOfToday) {
+  switch (numberOfToday) {
     case 0:
       weekdayString = "Habit List for Sunday";
       break;
@@ -30,7 +30,7 @@ function queryUserHabit() {
     case 6:
       weekdayString = "Habit List for Saturday";
       break;
-  }*/
+  }
 
   query.equalTo("user", objectId);
   query.find({
@@ -101,7 +101,89 @@ function queryUserHabit() {
     }
   });
 }
+////
 
+function queryUserHabit2() {
+  Parse.initialize("V6NcQkeFHBu6SOcSYJptWFgKzgOiuc2ywEXnmL31", "Xw3yYjXIFL6tVLwN3vhmPJMYLmd4AiJI3mRUjl1l");
+  var Habit = Parse.Object.extend("Habit");
+  var objectId = Parse.User.current().id;
+  var query = new Parse.Query(Habit);
+  var date = new Date();
+  var numberOfToday = date.getDay();
+  var weekdayString = "Other Habits";
+
+  query.equalTo("user", objectId);
+  query.find({
+    success : function (results) {
+      // Do something with the returned Parse.Object values
+      $('#display-Day2').append(weekdayString);
+      for (var i = 0; i < results.length; i++) {
+        var object = results[i];
+        var daysOfWeekArray = object.get('day');
+        var title = object.get('Title');
+        var icon = object.get('icon');
+        var queryId = object.id;
+        var currentStreak = object.get('currentStreak');
+        var successC = object.get('successCount');
+        var bestStreak = object.get('bestStreak');
+        var frequency = object.get('freq');
+        var progressBar = "progressBar";
+        var completed = "completedString";
+        var integerString = i.toString();
+        var resultBar = progressBar.concat(integerString);
+        var resultCompleted = completed.concat(integerString);
+        var totalTimesCompleted = object.get('timesCompleted');
+        var totalTimes = object.get('habitTotal');
+        if (daysOfWeekArray[numberOfToday] == 1) {
+          continue;
+        }
+        // Get upload image url
+        if (icon == "") {
+          icon = object.get('iconUpload').url();
+        }
+
+        (function ($) {
+          var s1 = "<li><div id='";
+          var s2 = "<button id='";
+          s1 = s1.concat(queryId + "'");
+          s2 = s2.concat(queryId + "'");
+
+          // Jack progress bar Text
+          /*$('#habit-list').append('<li>' + '<ul class="habit-info">' + s1 + 'class="habit-name">' + title + '</div></li>' +
+          '<li><img class="habit-icon" src="' + icon + '" alt="habit icon"></li></ul>' + '<div class="message">' + '<span class="message-total">' +
+          '<strong>' + currentStreak + '</strong>' +
+          ' days in a row! Best record: <strong>' + bestStreak +
+          '</strong><br><progress id="'+ resultBar + '"; value="' + currentStreak + '"' +
+          ' max="' + frequency + '"></progress><br>' +
+          '</span><span class="message-today"></span>' +
+          '</div>' + '<div class="habit-op">' +
+          s2 + 'type="button" class="op op-done" onclick="displayProgress(this,' + '\'' + resultBar + '\''+ ');" title="done">' + '<img src="../img/done.svg" alt="Done"></button>' +
+          '<button type="button" class="op op-edit" onclick="createSession(\'' + title + '\',\'' + queryId + '\')" title="edit habit">' + '<img src="../img/edit.svg" alt="Edit"></button>' +
+          s2 + 'type="button" class="op op-del" onclick="deleteHabit(this);" title="delete habit">' + '<img src="../img/delete.svg" alt="Del"></button></div>' + '</li>');
+          })(jQuery);*/
+          $('#habit-list2').append('<li>' + '<ul class="habit-info">' + s1 + 'class="habit-name">' + title + '</div></li>' +
+            '<li><img class="habit-icon" src="' + icon + '" alt="habit icon"></li></ul>' + '<div class="message">' + '<span class="message-total">' +
+            '<div id="' + resultCompleted + '">You have complete this ' + totalTimesCompleted + ' out of ' + totalTimes + ' times.</div>' +
+            '</strong><p><progress id="' + resultBar + '"; value="' + successC + '"' +
+            ' max="' + frequency + '"></progress></p>' +
+            '</span><span class="message-today"></span>' +
+            '</div>' + '<div class="habit-op" >' +
+            '<button type="button" class="op op-edit" onclick="createSession(\'' + title + '\',\'' + queryId + '\')" title="edit habit">' + '<img src="../img/edit.svg" alt="Edit"></button>' +
+            s2 + 'type="button" class="op op-del" onclick="deleteHabit(this);" title="delete habit">' + '<img src="../img/delete.svg" alt="Del"></button></div>' + '</li>');
+        })(jQuery);
+      }
+    },
+    error : function (error) {
+      alert("Error: " + error.code + " " + error.message);
+    }
+  });
+}
+
+
+
+
+
+////
 function createSession(title, id) {
   localStorage.setItem("habitTitle", title);
   localStorage.setItem("habitId", id);
