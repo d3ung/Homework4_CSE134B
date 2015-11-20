@@ -80,26 +80,32 @@ function submitHabit() {
         if (document.getElementById('frequency_three').checked) {
           frequency = 3;
         }
-      } else {
+      } 
+	  else {
         document.getElementById('frequency_one').checked = false;
         document.getElementById('frequency_two').checked = false;
         document.getElementById('frequency_three').checked = false;
         if (isNaN(document.getElementById('others').value)) {
           nanFlag = 1;
-        } else {
+        } 
+		else {
           frequency = parseInt(document.getElementById('others').value);
         }
       }
 
       if (weekdaysSelected == 0 && frequency <= 0) {
         showAlertDialog('Please select your weekly frequency and also input or select your daily frequency');
-      } else if (weekdaysSelected == 0) {
+      } 
+	  else if (weekdaysSelected == 0) {
         showAlertDialog('Please select some of the weekly to track your habits.');
-      } else if (nanFlag) {
+      } 
+	  else if (nanFlag) {
         showAlertDialog('Please input a number and not characters for your daily frequency.');
-      } else if (frequency <= 0) {
+      } 
+	  else if (frequency <= 0) {
         showAlertDialog('Please input or select your daily frequency to a value greater than 0.');
-      } else {
+      } 
+	  else {
         Habit.save({
           Title : document.getElementById("title").value,
           day : weekArray,
