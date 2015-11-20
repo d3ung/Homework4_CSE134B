@@ -32,12 +32,6 @@
     <button type="button" id="addHabit" onclick="location.href='add.html'" title="add habit">+</button>
 
     <script type="text/javascript">
-        function showMsg(element){
-            var msgElement = (element.parentNode.parentNode.getElementsByClassName("message"))[0];
-            // alert(msgElement.innerHTML);
-            msgElement.style.visibility="visible";
-        }
-
         $(".op-del").click(function handler() {
           showConfirmDialog(this);
         });
