@@ -5,6 +5,13 @@ function toggleForms() {
   login_form.style.display = (login_form.style.display == "none") ? "block" : "none";
 }
 
+function checkBrowser() {
+	uagent = navigator.userAgent;
+	isIE = /Internet Explorer/.test(uagent);
+	if(isIE) alert("We're sorry, but we currently do not support IE due to particularities with our backend. " +
+						"Please visit in another popular browser such as Firefox, Chrome, Safari or Opera to use our app.");
+}
+
 function login(evt) {
   evt.preventDefault(); // prevent form submission
   Parse.initialize("V6NcQkeFHBu6SOcSYJptWFgKzgOiuc2ywEXnmL31", "Xw3yYjXIFL6tVLwN3vhmPJMYLmd4AiJI3mRUjl1l");
