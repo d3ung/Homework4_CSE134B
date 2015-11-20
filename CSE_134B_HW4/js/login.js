@@ -53,6 +53,7 @@ function register(evt) {
 	user.set("password", password);
 	user.set("email", email);
 	user.set("notification", notification);
+    user.set("notitoday", false);
 
 	user.signUp(null, {
 		success : function (user) {

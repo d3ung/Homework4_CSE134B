@@ -36,6 +36,36 @@ function queryUserHabit() {
   query.equalTo("user", objectId);
   query.find({
     success : function (results) {
+      
+      //give a notification for an empty habit list
+      var d = new Date();
+    
+      if(results.length === 0 && Parse.User.current().attributes.notification){
+          $.notify("You don't have any habits today! Press '+' to add one!", {globalPosition: 'bottom right'});
+      }
+      else{
+          
+          //give users a daily notification
+          if(!Parse.User.current().get('notitoday')){
+              
+              $.notify("Welcome " + Parse.User.current().attributes.username +"! Make sure to fill out your habits today!", {className: 'success', autoHide: false});
+              
+              Parse.User.current().set('notitoday', false);
+              
+              Parse.User.current().save();
+          }
+      }
+        
+      //give users a warning notification, day about to end
+      if(d.getUTCHours() >= 0 && d.getUTCHours() < 3){
+          
+          $.notify("Make sure to fill out your habits before midnight!", {className: 'warn'});
+          
+          Parse.User.current().set("notitoday", false);
+          
+          Parse.User.current().save();
+      }
+        
       // Do something with the returned Parse.Object values
       $('#display-Day').append(weekdayString);
       for (var i = 0; i < results.length; i++) {
@@ -226,12 +256,17 @@ function displayProgress(element, barId, completedId) {
                     msgElement.style.visibility = "visible";
                     $(hashResultBarId).prop('value', successCount);
                     $(hashCompletedId).html('You have completed this ' + timesCompleted + ' out of ' + habitTotal + ' times.');
+                    
+                    //give a user a success notification
+                     if(successCount == freq){
+                          $.notify("You have completed habit '" + habit.attributes.Title + "'!", 'success', {elementPostion: 'top'});
+                      }
                 } else {
                     alert('You are done with this habit for the day!');
                 }
             } else {
-                // Force refresh when new day
-                alert('A new day has begun! Refreshing...');
+                // Force refresh when new day, already complete notification
+                $.notify("You've completed this habit for today!", {globalPosition: 'top right'});
                 window.location.reload(false);
             }
         }
