@@ -35,11 +35,10 @@
           </tr>
         </table>
         <div class="buttons">
+          <input class="signUpButton" type="button" value="Sign Up" onclick="toggleForms()">
           <input class="loginButton" type="submit" value="Login">
-          <input class="signUpButton" type="button" value="Signup" onclick="toggleForms()">
         </div>
       </form>
-
 
       <form class="signupForm" id="signupForm" action="list.html" method="POST" accept-charset="utf-8" style="display:none" onsubmit="register(event)">
         <table>
@@ -76,8 +75,8 @@
           </tr>
         </table>
         <div class="buttons"> 
-            <input class="confirmButton" type="submit" value="Confirm">
             <input class="cancelButton" type="button" value="Cancel" onclick=toggleForms()>
+            <input class="confirmButton" type="submit" value="Confirm">
         </div>
       </form>
 
