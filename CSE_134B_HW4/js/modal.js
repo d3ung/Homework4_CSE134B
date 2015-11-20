@@ -4,7 +4,6 @@ function initializeSettingsDialog() {
   $("#ChangeSettingsDialog").dialog({
     autoOpen : false,
     modal : true,
-    height : 115,
     hide : "slideUp",
     show: "slideDown",
     open : function (event, ui) {
@@ -49,7 +48,6 @@ function initializeConfirmDialog() {
   $("#ConfirmDeleteDialog").dialog({
     autoOpen : false,
     modal : true,
-    height : 115,
     hide : "slideUp",
     show: "slideDown",
     open : function (event, ui) {
@@ -91,7 +89,6 @@ function initializeLoginDialog() {
   $("#LoginDialog").dialog({
     autoOpen : false,
     modal : true,
-    height : 115,
     hide : "slideUp",
     show: "slideDown",
     open : function (event, ui) {
@@ -123,7 +120,6 @@ function initializeAlertDialog() {
   $("#AlertDialog").dialog({
     autoOpen : false,
     modal : true,
-    height : 115,
     hide : "slideUp",
     show: "slideDown",
     open : function (event, ui) {
@@ -151,7 +147,6 @@ function initializeNotificationDialog() {
   $("#NotificationDialog").dialog({
     autoOpen : false,
     modal : true,
-    height : 115,
     hide : "slideUp",
     show: "slideDown",
     open : function (event, ui) {
