@@ -13,6 +13,8 @@ body{
 #habit-list{list-style: none; padding:0;}
 #habit-list>li{position:relative; height: 240px;padding:5%; background:rgba(255,255,255,1); border:1px solid rgba(255, 255, 255, 0.3); border-radius:5px; margin:5px; padding:0;}
 
+#habit-list2{list-style: none; padding:0;}
+#habit-list2>li{position:relative; height: 240px;padding:5%; background:rgba(255,255,255,1); border:1px solid rgba(255, 255, 255, 0.3); border-radius:5px; margin:5px; padding:0;}
 /* habit info */
 .habit-info{padding:0;margin-left:20px;}
 .habit-info>li{list-style:none; height:100%; padding:0; margin-right:5px; vertical-align: center;}
