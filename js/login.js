@@ -31,12 +31,12 @@ function login(evt) {
           location.href = "./list.html";
         },
         error : function (user, error) {
-          alert("Login Error: " + error.code + " " + error.message);
+          alert("Error: " + error.message);
         }
       });
     },
     error : function (error) {
-      alert("Error:" + error.code + " " + error.message);
+      alert("Error:" + error.message);
     }
   });
 }
@@ -60,7 +60,7 @@ function register(evt) {
       document.getElementById("signupForm").submit();
     },
     error : function (user, error) {
-      alert("Register Error: " + error.code + " " + error.message);
+      alert("Error: " + error.message);
     }
   });
 }
