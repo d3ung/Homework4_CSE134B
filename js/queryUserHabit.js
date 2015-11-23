@@ -4,7 +4,7 @@ function queryUserHabit() {
 	var objectId = Parse.User.current().id;
 	var query = new Parse.Query(Habit);
 	var date = new Date();
-	var numberOfToday = date.getDay();
+	var numberOfToday = date.getUTCDay();
 	var weekdayString = "Habit List";
 
 	// Get the day for today
@@ -131,7 +131,7 @@ function queryUserHabit2() {
 	var objectId = Parse.User.current().id;
 	var query = new Parse.Query(Habit);
 	var date = new Date();
-	var numberOfToday = date.getDay();
+	var numberOfToday = date.getUTCDay();
 	var weekdayString = "Other Habits<hr>";
 
 	query.equalTo("user", objectId);
