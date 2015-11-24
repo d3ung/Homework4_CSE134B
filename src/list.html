@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html>
-<head>
+  <head>
     <title>Virtue / Vice</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,13 +8,14 @@
     <link rel="stylesheet" type="text/css" href="../css/modal.css">
     <script type="text/javascript" src="../js/queryUserHabit.js"></script>
     <script type="text/javascript" src="../js/modal.js"></script>
+    <script type="text/javascript" src="../js/utils.js"></script>
     <script type="text/javascript" src="../js/parse-1.6.7.min.js"></script>
-	<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
-	<script type="text/javascript" src ="../js/notify.min.js"></script>
-</head>
+    <script type="text/javascript" src="../js/notify.min.js"></script>
+  </head>
 
-<body onload="loginCheck(); queryUserHabit(); queryUserHabit2(); 
+  <body onload="checkLogin(); queryUserHabit(); queryUserHabit2(); 
 initializeNotificationDialog(); initializeAlertDialog()">
   <button type="button" id="logOut" onclick="logUserOut();" title="logOut">
       <img src="../img/logout.png" alt="Log Out" width="30px" height="30px">
@@ -23,7 +24,7 @@ initializeNotificationDialog(); initializeAlertDialog()">
         <h1 id="display-Day"></h1>
         <ul id="habit-list">
         </ul>
-		<h1 id="display-Day2"></h1>
+  <h1 id="display-Day2"></h1>
         <ul id="habit-list2">
         </ul>
     </section>

@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="../css/modal.css">
     <script type="text/javascript" src="../js/queryEditHabit.js"></script>
     <script type="text/javascript" src="../js/modal.js"></script>
+    <script type="text/javascript" src="../js/utils.js"></script>
     <script type="text/javascript" src="../js/parse-1.6.7.min.js"></script>
-	<script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.11.3.min.js"></script>
     <script type="text/javascript" src="../js/jquery-ui.min.js"></script>
   </head>
 
-  <body onload="loginCheck(); queryEditHabit(); initializeAlertDialog()">
+  <body onload="checkLogin(); queryEditHabit(); initializeAlertDialog()">
     <div id="AlertDialog" class="modal"></div>
   <div class="forms">
     <h2>Edit A Habit</h2>
@@ -63,7 +64,7 @@
       }
       else{
         showAlertDialog('Your title contains illegal characters, please change it. ' +
-				'Illegal characters are anything but alphanumerics, spaces and underscores.');
+    'Illegal characters are anything but alphanumerics, spaces and underscores.');
       }
     }
   </script>

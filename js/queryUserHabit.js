@@ -349,13 +349,6 @@ function dateDiffInDays(d1, d2) {
 	return Math.floor((utc2 - utc1) / millisecondsPerDay);
 }
 
-function loginCheck() {
-	Parse.initialize("V6NcQkeFHBu6SOcSYJptWFgKzgOiuc2ywEXnmL31", "Xw3yYjXIFL6tVLwN3vhmPJMYLmd4AiJI3mRUjl1l");
-	if (Parse.User.current() == null) {
-		location.href = "login.html";
-	}
-}
-
 function logUserOut() {
 	Parse.User.logOut();
 	location.href = "login.html";

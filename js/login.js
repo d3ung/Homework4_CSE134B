@@ -64,10 +64,3 @@ function register(evt) {
     }
   });
 }
-
-function checkLogin() {
-  Parse.initialize("V6NcQkeFHBu6SOcSYJptWFgKzgOiuc2ywEXnmL31", "Xw3yYjXIFL6tVLwN3vhmPJMYLmd4AiJI3mRUjl1l");
-  if (Parse.User.current() != null) {
-    location.href = "./list.html";
-  }
-}
