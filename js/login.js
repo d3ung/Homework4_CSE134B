@@ -6,8 +6,8 @@ function toggleForms() {
 }
 
 function checkBrowser() {
-	uagent = navigator.userAgent;
-	isIE = /Internet Explorer/.test(uagent);
+	uagent = window.navigator.userAgent;
+	isIE = /Firefox/.test(uagent);
 	if(isIE) alert("We're sorry, but we currently do not support IE due to particularities with our backend. " +
 						"Please visit in another popular browser such as Firefox, Chrome, Safari or Opera to use our app.");
 }
